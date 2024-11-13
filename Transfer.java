@@ -157,6 +157,7 @@ public class Transfer {
     *     methods searchByName() and List method remove()
     */
 
+
     // These below gather the String name for our searchByName() method
     Scanner keyboard = new Scanner(System.in);
     System.out.print("\nName of Item to be Removed: ");
@@ -166,16 +167,18 @@ public class Transfer {
 
       /* This is where you will use our generic method searchByName()
       *  and List method remove() for our foodList
-      */ 
-      System.out.println("Remove items for foodList not implemented yet."); 
+      */
+      int index = foodInventory.searchByName(foodList, name);
+      if (index != -1) foodList.remove(index);
 
 
     } else if(listNumber == 2) { // Parts
 
       /* This is where you will use our generic method searchByName()
       *  and List method remove() for our partsList
-      */  
-      System.out.println("Remove items for partsList not implemented yet."); 
+      */
+      int index = partsInventory.searchByName(partsList, name);
+      if (index != -1) partsList.remove(index);
 
 
     } else if(listNumber == 3) { // Supplies
@@ -183,7 +186,8 @@ public class Transfer {
       /* This is where you will use our generic method searchByName()
       *  and List method remove() for our suppliesList
       */
-      System.out.println("Remove items for suppliesList not implemented yet.");
+      int index = suppliesInventory.searchByName(suppliesList, name);
+      if (index != -1) suppliesList.remove(index);
 
     }
   }
