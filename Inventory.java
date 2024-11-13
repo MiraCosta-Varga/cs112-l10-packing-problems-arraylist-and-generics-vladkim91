@@ -1,4 +1,6 @@
-public class Inventory {
+import java.util.List;
+
+public class Inventory <T extends Supplies>{
 
 	/*     STEP 3 
 	*        
@@ -8,7 +10,6 @@ public class Inventory {
 	*
 	*      Go to Transfer.java for STEP 4
 	*/
-
 	/*     STEP 5
 	*
 	*      Create a method called searchByName() that takes two parameters:
@@ -20,8 +21,6 @@ public class Inventory {
 	*      input String "name", use the indexOf() method to return the 
 	*      index. If no match is found, return -1. 
 	*/
-
-
 	/*     STEP 7:
 	* 
 	*      Create a method called checkQty() that takes three parameters:
@@ -43,5 +42,44 @@ public class Inventory {
 	*      match the quantity in the list, then update using .setQuantity
 	*      and return the object with the new quantity.
 	*/
+	private List<T> items;
 
+	public Inventory(List<T> items) {
+		this.items = items;
+	}
+
+	public List<T> getItems() {
+		return items;
+	}
+
+	public void setItems(List<T> items) {
+		this.items = items;
+	}
+
+	// Step 5: Create searchByName method
+	public int searchByName(List<T> list, String name) {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getName().equalsIgnoreCase(name)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	// Step 7: Create checkQty method
+	public T checkQty(List<T> list, String name, int desiredQty) {
+		int index = searchByName(list, name);
+		if (index != -1) {
+			T item = list.get(index);
+			if (item.getQuantity() == desiredQty) {
+				System.out.println("Quantity matches!");
+				return item;
+			} else {
+				item.setQuantity(desiredQty);
+				System.out.println("Updated quantity to " + desiredQty);
+				return item;
+			}
+		}
+		return null;
+	}
 }
