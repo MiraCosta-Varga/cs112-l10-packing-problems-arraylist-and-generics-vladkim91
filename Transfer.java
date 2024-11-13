@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -28,6 +29,9 @@ public class Transfer {
   *   and suppliesList.
   *
   */
+  private ArrayList<Food> foodList = new ArrayList<>();
+  private ArrayList<Parts> partsList = new ArrayList<>();
+  private ArrayList<Supplies> suppliesList = new ArrayList<>();
 
   public Transfer() {
 
@@ -40,7 +44,9 @@ public class Transfer {
     *   You can use a for-loop to transfer all our items, or import
     *   java.util.Arrays and use the Arrays.asList() method
     */
-
+    foodList.addAll(Arrays.asList(foodArray));
+    partsList.addAll(Arrays.asList(partsArray));
+    suppliesList.addAll(Arrays.asList(suppliesArray));
   }
 
 
@@ -86,6 +92,8 @@ public class Transfer {
       /* Use the newFoodItem here and enter it into our foodList.
       *  Print to make sure it was successful
       */
+      foodList.add(newFoodItem);
+      System.out.println("Added " + newFoodItem);
 
     } else if(listNumber == 2) { // Add to Parts list
 
@@ -101,6 +109,8 @@ public class Transfer {
       /* Use the newPartsItem here and enter it into our partsList.
       *  Print to make sure it was successful
       */
+      partsList.add(newPartsItem);
+      System.out.println("Added " + newPartsItem);
 
     } else { // Add to Supplies list
 
@@ -114,7 +124,8 @@ public class Transfer {
       /* Use the newSuppliesItem here and enter it into our suppliesList.
       *  Print to make sure it was successful
       */
-
+      suppliesList.add(newSuppliesItem);
+      System.out.println("Added " + newSuppliesItem);
     }
   }
 
@@ -134,6 +145,10 @@ public class Transfer {
   *            Food/Parts/Supplies
   */
 
+  private Inventory<Food> foodInventory = new Inventory<>(foodList);
+  private Inventory<Parts> partsInventory = new Inventory<>(partsList);
+  private Inventory<Supplies> suppliesInventory = new Inventory<>(suppliesList);
+
   public void removeItems(int listNumber) {
 
     /*    STEP 6
@@ -141,6 +156,7 @@ public class Transfer {
     *     Use our generic objects from above to access the generic 
     *     methods searchByName() and List method remove()
     */
+
 
     // These below gather the String name for our searchByName() method
     Scanner keyboard = new Scanner(System.in);
@@ -151,16 +167,18 @@ public class Transfer {
 
       /* This is where you will use our generic method searchByName()
       *  and List method remove() for our foodList
-      */ 
-      System.out.println("Remove items for foodList not implemented yet."); 
+      */
+      int index = foodInventory.searchByName(foodList, name);
+      if (index != -1) foodList.remove(index);
 
 
     } else if(listNumber == 2) { // Parts
 
       /* This is where you will use our generic method searchByName()
       *  and List method remove() for our partsList
-      */  
-      System.out.println("Remove items for partsList not implemented yet."); 
+      */
+      int index = partsInventory.searchByName(partsList, name);
+      if (index != -1) partsList.remove(index);
 
 
     } else if(listNumber == 3) { // Supplies
@@ -168,7 +186,8 @@ public class Transfer {
       /* This is where you will use our generic method searchByName()
       *  and List method remove() for our suppliesList
       */
-      System.out.println("Remove items for suppliesList not implemented yet.");
+      int index = suppliesInventory.searchByName(suppliesList, name);
+      if (index != -1) suppliesList.remove(index);
 
     }
   }
@@ -204,7 +223,7 @@ public class Transfer {
       /* This is where you will use our generic method checkQty()
       *  for our foodList.
       */
-      System.out.println("Edit Quantity for foodList not implemented yet.");
+      foodInventory.checkQty(foodList, name, desiredQty);
 
 
     } else if(listNumber == 2) { // Parts
@@ -212,7 +231,7 @@ public class Transfer {
       /* This is where you will use our generic method checkQty()
       *  for our partsList.
       */
-      System.out.println("Edit Quantity for partsList not implemented yet.");
+      partsInventory.checkQty(partsList, name, desiredQty);
 
 
     } else if(listNumber == 3) { // Supplies
@@ -220,7 +239,7 @@ public class Transfer {
       /* This is where you will use our generic method checkQty()
       *  for our suppliesList.
       */
-      System.out.println("Edit Quantity for suppliesList not implemented yet.");
+      suppliesInventory.checkQty(suppliesList, name, desiredQty);
 
     }
   }
@@ -240,11 +259,6 @@ public class Transfer {
   // Will print our lists in a table once we have created them
   public void printLists() {
 
-    
-    // Erase the below print message once ArrayLists have been made
-    System.out.println("\nLists do not exist yet to print!!");
-    /* Once you have created your three lists in Step 1, erase this comment
-    
 
 
     if(foodList.isEmpty() && partsList.isEmpty() && suppliesList.isEmpty()) {
@@ -288,6 +302,5 @@ public class Transfer {
     }
 
 
-    Once you have created your lists, erase this comment */
   }
 }
