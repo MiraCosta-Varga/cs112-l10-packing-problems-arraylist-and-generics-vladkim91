@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -28,6 +29,9 @@ public class Transfer {
   *   and suppliesList.
   *
   */
+  private ArrayList<Food> foodList = new ArrayList<>();
+  private ArrayList<Parts> partsList = new ArrayList<>();
+  private ArrayList<Supplies> suppliesList = new ArrayList<>();
 
   public Transfer() {
 
@@ -40,7 +44,9 @@ public class Transfer {
     *   You can use a for-loop to transfer all our items, or import
     *   java.util.Arrays and use the Arrays.asList() method
     */
-
+    foodList.addAll(Arrays.asList(foodArray));
+    partsList.addAll(Arrays.asList(partsArray));
+    suppliesList.addAll(Arrays.asList(suppliesArray));
   }
 
 
