@@ -223,7 +223,7 @@ public class Transfer {
       /* This is where you will use our generic method checkQty()
       *  for our foodList.
       */
-      System.out.println("Edit Quantity for foodList not implemented yet.");
+      foodInventory.checkQty(foodList, name, desiredQty);
 
 
     } else if(listNumber == 2) { // Parts
@@ -231,7 +231,7 @@ public class Transfer {
       /* This is where you will use our generic method checkQty()
       *  for our partsList.
       */
-      System.out.println("Edit Quantity for partsList not implemented yet.");
+      partsInventory.checkQty(partsList, name, desiredQty);
 
 
     } else if(listNumber == 3) { // Supplies
@@ -239,7 +239,7 @@ public class Transfer {
       /* This is where you will use our generic method checkQty()
       *  for our suppliesList.
       */
-      System.out.println("Edit Quantity for suppliesList not implemented yet.");
+      suppliesInventory.checkQty(suppliesList, name, desiredQty);
 
     }
   }
