@@ -259,11 +259,6 @@ public class Transfer {
   // Will print our lists in a table once we have created them
   public void printLists() {
 
-    
-    // Erase the below print message once ArrayLists have been made
-    System.out.println("\nLists do not exist yet to print!!");
-    /* Once you have created your three lists in Step 1, erase this comment
-    
 
 
     if(foodList.isEmpty() && partsList.isEmpty() && suppliesList.isEmpty()) {
@@ -307,6 +302,5 @@ public class Transfer {
     }
 
 
-    Once you have created your lists, erase this comment */
   }
 }
